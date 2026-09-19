@@ -1,86 +1,170 @@
+```astro
 ---
 import { getMenu, getSiteSettings } from "emdash";
 import {
-	WidgetArea,
-	EmDashHead,
-	EmDashBodyStart,
-	EmDashBodyEnd,
+        EmDashHead,
+        EmDashBodyStart,
+        EmDashBodyEnd,
 } from "emdash/ui";
 import { createPublicPageContext } from "emdash/page";
 import LiveSearch from "emdash/ui/search";
 import { resolveStarterSiteIdentity } from "../utils/site-identity";
+import "../styles/global.css";
 
 interface Props {
-	title: string;
-	pageTitle?: string | null;
-	description?: string | null;
-	image?: string | null;
-	canonical?: string | null;
-	/** Pass content reference for plugin page contributions on content pages */
-	content?: { collection: string; id: string; slug?: string | null };
+        title: string;
+        pageTitle?: string | null;
+        description?: string | null;
+        image?: string | null;
+        canonical?: string | null;
+        content?: { collection: string; id: string; slug?: string | null };
 }
 
 const { title, pageTitle, description, image, canonical, content } = Astro.props;
-const { siteTitle, siteTagline, siteLogo } = resolveStarterSiteIdentity(await getSiteSettings());
-const fullTitle = title.includes(siteTitle) ? title : `${title} — ${siteTitle}`;
+
+const { siteTitle, siteTagline, siteLogo } =
+        resolveStarterSiteIdentity(await getSiteSettings());
+
+const fullTitle = title.includes(siteTitle)
+        ? title
+        : `${title} — ${siteTitle}`;
+
 const pageDescription = description ?? siteTagline;
 
 const menu = await getMenu("primary");
 
 const pageCtx = createPublicPageContext({
-	Astro,
-	kind: content ? "content" : "custom",
-	pageType: "website",
-	title: fullTitle,
-	pageTitle: pageTitle ?? title,
-	description: pageDescription,
-	canonical,
-	image,
-	content,
-	siteName: siteTitle,
+        Astro,
+        kind: content ? "content" : "custom",
+        pageType: "website",
+        title: fullTitle,
+        pageTitle: pageTitle ?? title,
+        description: pageDescription,
+        canonical,
+        image,
+        content,
+        siteName: siteTitle,
 });
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{fullTitle}</title>
-		{pageDescription && <meta name="description" content={pageDescription} />}
-		{canonical && <link rel="canonical" href={canonical} />}
-		<EmDashHead page={pageCtx} />
-	</head>
-	<body>
-		<EmDashBodyStart page={pageCtx} />
+        <head>
+                <meta charset="UTF-8" />
+                <meta
+                        name="viewport"
+                        content="width=device-width, initial-scale=1.0"
+                />
+                <title>{fullTitle}</title>
 
-		<header>
-			<nav>
-				<a href="/">
-					{siteLogo
-						? <img src={siteLogo.url} alt={siteLogo.alt || siteTitle} style="height:48px;width:auto;margin:-8px 0;display:block;" />
-						: siteTitle
-					}
-				</a>
-				{
-					menu?.items.map((item) => (
-						<a href={item.url} target={item.target}>
-							{item.label}
-						</a>
-					))
-				}
-				<LiveSearch placeholder="Search..." collections={["posts", "pages"]} />
-			</nav>
-		</header>
+                {pageDescription && (
+                        <meta name="description" content={pageDescription} />
+                )}
 
-		<main>
-			<slot />
-		</main>
+                {canonical && <link rel="canonical" href={canonical} />}
 
-		<footer>
-			<WidgetArea name="sidebar" />
-		</footer>
+                <EmDashHead page={pageCtx} />
+        </head>
 
-		<EmDashBodyEnd page={pageCtx} />
-	</body>
+        <body>
+                <EmDashBodyStart page={pageCtx} />
+
+                <header class="site-header">
+                        <div class="header-inner">
+                                <a class="brand" href="/">
+                                        {siteLogo ? (
+                                                <img
+                                                        src={siteLogo.url}
+                                                        alt={siteLogo.alt || siteTitle}
+                                                />
+                                        ) : (
+                                                <span class="brand-mark">D</span>
+                                        )}
+
+                                        <span class="brand-name">{siteTitle}</span>
+                                </a>
+
+                                <nav class="top-nav" aria-label="Main navigation">
+                                        <a href="/docs">Docs</a>
+                                        <a href="/api">API Reference</a>
+                                        <a href="/guides">Guides</a>
+                                        <a href="/posts">Changelog</a>
+                                </nav>
+
+                                <div class="header-search">
+                                        <LiveSearch
+                                                placeholder="Search documentation..."
+                                                collections={["posts", "pages"]}
+                                        />
+                                </div>
+                        </div>
+                </header>
+
+                <div class="portal-layout">
+                        <aside class="docs-sidebar">
+                                <div class="sidebar-section">
+                                        <p class="sidebar-heading">Documentation</p>
+
+                                        <a href="/getting-started">
+                                                Getting Started
+                                        </a>
+
+                                        <a href="/authentication">
+                                                Authentication
+                                        </a>
+                                </div>
+
+                                <div class="sidebar-section">
+                                        <p class="sidebar-heading">API Reference</p>
+
+                                        <a href="/api/projects">Projects</a>
+                                        <a href="/api/users">Users</a>
+                                        <a href="/api/webhooks">Webhooks</a>
+                                </div>
+
+                                <div class="sidebar-section">
+                                        <p class="sidebar-heading">Guides</p>
+
+                                        <a href="/guides/error-handling">
+                                                Error Handling
+                                        </a>
+
+                                        <a href="/guides/webhooks">
+                                                Working with Webhooks
+                                        </a>
+                                </div>
+
+                                <div class="sidebar-section">
+                                        <p class="sidebar-heading">Resources</p>
+
+                                        <a href="/resources">Resources</a>
+                                </div>
+                        </aside>
+
+                        <main class="main-content">
+                                <div class="content-container">
+                                        <slot />
+                                </div>
+                        </main>
+                </div>
+
+								<footer class="site-footer">
+													<div class="footer-inner">
+																	<div>
+																					<strong>{siteTitle}</strong>
+																					<p>{siteTagline}</p>
+																	</div>
+
+																	<div class="footer-links">
+																					<a href="/docs">Documentation</a>
+																					<a href="/api">API Reference</a>
+																					<a href="/guides">Guides</a>
+																					<a href="/posts">Changelog</a>
+																	</div>
+													</div>
+									</footer>
+
+                <EmDashBodyEnd page={pageCtx} />
+        </body>
 </html>
+```
