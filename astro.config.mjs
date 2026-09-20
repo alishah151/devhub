@@ -5,6 +5,8 @@ import emdash, { local } from "emdash/astro";
 import { sqlite } from "emdash/db";
 
 export default defineConfig({
+
+	site: "https://devhub-production-ccd1.up.railway.app",
 	output: "server",
 	adapter: node({
 		mode: "standalone",
