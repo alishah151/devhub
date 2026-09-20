@@ -69,11 +69,12 @@ const pageCtx = createPublicPageContext({
           <span class="brand-name">{siteTitle}</span>
         </a>
 
-        <nav class="top-nav" aria-label="Main navigation">
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="/api/explorer" class="nav-api-explorer">API Explorer</a>
           <a href="/docs">Docs</a>
-          <a href="/api">API Reference</a>
           <a href="/guides">Guides</a>
-          <a href="/posts">Changelog</a>
+          <a href="/changelog">Changelog</a>
+          <a href="/resources">Resources</a>
         </nav>
 
         <div class="header-search">
@@ -130,6 +131,7 @@ const pageCtx = createPublicPageContext({
         </div>
 
         <div class="footer-links">
+          <a href="/api/explorer">API Explorer</a>
           <a href="/docs">Documentation</a>
           <a href="/api">API Reference</a>
           <a href="/guides">Guides</a>

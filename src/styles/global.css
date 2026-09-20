@@ -271,6 +271,7 @@ a:hover {
     flex: 1;
   }
 }
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
@@ -278,6 +279,7 @@ a:hover {
   color: var(--muted);
   font-size: 14px;
 }
+
 .hero {
   padding: 72px 0 80px;
   border-bottom: 1px solid var(--border);
@@ -372,7 +374,7 @@ a:hover {
   letter-spacing: -0.025em;
 }
 
-.section-heading > a {
+.section-heading>a {
   color: var(--brand);
   font-size: 14px;
   font-weight: 600;
@@ -458,13 +460,13 @@ a:hover {
   color: var(--text);
 }
 
-.api-row > div {
+.api-row>div {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.api-row > span {
+.api-row>span {
   color: var(--muted);
   font-size: 14px;
 }
@@ -533,6 +535,7 @@ a:hover {
     align-items: flex-start;
   }
 }
+
 .page-intro {
   max-width: 760px;
   margin-bottom: 36px;
@@ -544,12 +547,13 @@ a:hover {
   letter-spacing: -0.04em;
 }
 
-.page-intro > p:last-child {
+.page-intro>p:last-child {
   margin: 0;
   color: var(--muted);
   font-size: 18px;
   line-height: 1.7;
 }
+
 /* API Explorer */
 
 .api-explorer {
@@ -675,7 +679,7 @@ a:hover {
   margin-bottom: 24px;
 }
 
-.explorer-card-header > div {
+.explorer-card-header>div {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -858,6 +862,7 @@ a:hover {
     min-width: 44px;
   }
 }
+
 .devhub-search {
   position: relative;
   width: min(320px, 100%);
@@ -928,4 +933,8 @@ a:hover {
   z-index: -1;
   border: 0;
   background: transparent;
+}
+
+.nav-api-explorer {
+  font-weight: 700;
 }
