@@ -256,6 +256,37 @@ export default function ApiExplorer() {
               </div>
 
               <pre>{JSON.stringify(request, null, 2)}</pre>
+            </div><div className="output-panel">
+              <div className="output-header">
+                <span>Response</span>
+
+                {requestState === "success" && (
+                  <span className="response-status">200 OK</span>
+                )}
+
+                {requestState === "error" && (
+                  <span className="response-error">401 Unauthorized</span>
+                )}
+              </div>
+
+              <pre>
+                {requestState === "loading"
+                  ? "// Sending request..."
+                  : requestState === "success"
+                    ? JSON.stringify(selectedEndpoint.response, null, 2)
+                    : requestState === "error"
+                      ? JSON.stringify(
+                          {
+                            error: {
+                              code: "invalid_api_key",
+                              message: "The API key is missing or invalid.",
+                            },
+                          },
+                          null,
+                          2,
+                        )
+                      : '// Click "Send Request" to see the response'}
+              </pre>
             </div>
             <div className="output-panel code-panel">
               <div className="output-header">
@@ -307,38 +338,7 @@ export default function ApiExplorer() {
                 <pre>{codeExamples.python}</pre>
               </div>
             </div>
-            <div className="output-panel">
-              <div className="output-header">
-                <span>Response</span>
-
-                {requestState === "success" && (
-                  <span className="response-status">200 OK</span>
-                )}
-
-                {requestState === "error" && (
-                  <span className="response-error">401 Unauthorized</span>
-                )}
-              </div>
-
-              <pre>
-                {requestState === "loading"
-                  ? "// Sending request..."
-                  : requestState === "success"
-                    ? JSON.stringify(selectedEndpoint.response, null, 2)
-                    : requestState === "error"
-                      ? JSON.stringify(
-                          {
-                            error: {
-                              code: "invalid_api_key",
-                              message: "The API key is missing or invalid.",
-                            },
-                          },
-                          null,
-                          2,
-                        )
-                      : '// Click "Send Request" to see the response'}
-              </pre>
-            </div>
+            
           </div>
         </div>
       </div>
