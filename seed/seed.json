@@ -2,20 +2,50 @@
 	"$schema": "https://emdashcms.com/seed.schema.json",
 	"version": "1",
 	"meta": {
-		"name": "Starter",
-		"description": "A minimal EmDash starter with posts and pages",
-		"author": "EmDash"
+		"name": "Exported Seed",
+		"description": "Exported from existing EmDash database"
 	},
 	"settings": {
-    "title": "DevHub",
-    "tagline": "Developer documentation, API reference, and practical guides."
+		"title": "devhub",
+		"tagline": "Developer documentation, API reference, and practical guides."
 	},
 	"collections": [
+		{
+			"slug": "pages",
+			"label": "Pages",
+			"labelSingular": "Page",
+			"supports": [
+				"drafts",
+				"revisions",
+				"search"
+			],
+			"urlPattern": "/{slug}",
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				}
+			]
+		},
 		{
 			"slug": "posts",
 			"label": "Posts",
 			"labelSingular": "Post",
-			"supports": ["drafts", "revisions", "search", "seo"],
+			"supports": [
+				"drafts",
+				"revisions",
+				"search",
+				"seo"
+			],
 			"fields": [
 				{
 					"slug": "title",
@@ -41,60 +71,49 @@
 					"type": "text"
 				}
 			]
-		},
-		{
-			"slug": "pages",
-			"label": "Pages",
-			"labelSingular": "Page",
-			"urlPattern": "/{slug}",
-			"supports": ["drafts", "revisions", "search"],
-			"fields": [
-				{
-					"slug": "title",
-					"label": "Title",
-					"type": "string",
-					"required": true,
-					"searchable": true
-				},
-				{
-					"slug": "content",
-					"label": "Content",
-					"type": "portableText",
-					"searchable": true
-				}
-			]
 		}
 	],
+	"defaultLocale": "en",
 	"taxonomies": [
 		{
+			"id": "tax:category",
 			"name": "category",
 			"label": "Categories",
 			"labelSingular": "Category",
 			"hierarchical": true,
-			"collections": ["posts"],
+			"collections": [
+				"posts"
+			],
 			"terms": [
 				{
+					"id": "term:category:general",
 					"slug": "general",
 					"label": "General"
 				},
 				{
+					"id": "term:category:updates",
 					"slug": "updates",
 					"label": "Updates"
 				}
 			]
 		},
 		{
+			"id": "tax:tag",
 			"name": "tag",
 			"label": "Tags",
 			"labelSingular": "Tag",
 			"hierarchical": false,
-			"collections": ["posts"],
+			"collections": [
+				"posts"
+			],
 			"terms": [
 				{
+					"id": "term:tag:starter",
 					"slug": "starter",
 					"label": "Starter"
 				},
 				{
+					"id": "term:tag:example",
 					"slug": "example",
 					"label": "Example"
 				}
@@ -103,6 +122,7 @@
 	],
 	"menus": [
 		{
+			"id": "menu:primary",
 			"name": "primary",
 			"label": "Primary Navigation",
 			"items": [
@@ -132,21 +152,18 @@
 			"widgets": [
 				{
 					"type": "component",
-					"componentId": "core:search",
-					"title": "Search"
+					"title": "Search",
+					"componentId": "core:search"
 				},
 				{
 					"type": "component",
-					"componentId": "core:categories",
-					"title": "Categories"
+					"title": "Categories",
+					"componentId": "core:categories"
 				},
 				{
 					"type": "component",
-					"componentId": "core:recent-posts",
 					"title": "Recent Posts",
-					"settings": {
-						"count": 5
-					}
+					"componentId": "core:recent-posts"
 				}
 			]
 		}
@@ -154,23 +171,2895 @@
 	"content": {
 		"pages": [
 			{
-				"id": "about",
-				"slug": "about",
+				"id": "pages:resources",
+				"slug": "resources",
 				"status": "published",
 				"data": {
-					"title": "About",
+					"title": "Resources",
 					"content": [
 						{
 							"_type": "block",
+							"_key": "9oa5py3kb",
 							"style": "normal",
 							"children": [
 								{
 									"_type": "span",
-									"text": "This is the about page. Edit it in the admin panel or replace this template with your own design.",
-									"_key": "k1"
+									"_key": "xifh7u7g4",
+									"text": "Resources"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "haz07ypf3",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "mb2j8s7r1",
+									"text": "Useful tools and references for building integrations with DevHub."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "hl9iwseuz",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "zq02fzcry",
+									"text": "SDKs"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "z9mysprki",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "7v1x0hzm6",
+									"text": "Use the official client libraries to integrate DevHub into your application."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "w8u1mo643",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "ceubrby15",
+									"text": "JavaScript / TypeScript"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "mtczjsem3",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "jbq1hlnbr",
+									"text": "Use the DevHub API with any JavaScript or TypeScript application using standard HTTP clients such as fetch or Axios."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "so1em4ug5",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "poi3uoaeq",
+									"text": "API Tools"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "r8yvf247z",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "b3m6vwetj",
+									"text": "Use tools such as curl, Postman, or Insomnia to test API requests and inspect responses during development."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "0elj19opg",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "6fvsq2i14",
+									"text": "Examples"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "f97ma98h8",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "y87n7t4x8",
+									"text": "Explore example requests and responses throughout the API documentation."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "0rj3tl90h",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "rf129t327",
+									"text": "Developer Tools"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "bv26qp4z4",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "qq5su02u0",
+									"text": "API Explorer"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "npmmnhg1h",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "n0lbfrt4y",
+									"text": "Experiment with DevHub API endpoints directly from the browser."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "rltbzekkc",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "7t926kvs5",
+									"text": "Postman"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "gbjvz0uwm",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "qep7mijir",
+									"text": "Import your API endpoints into Postman to create and test requests."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "3rg3xgsq8",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "2s56f2wk6",
+									"text": "curl"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "m8cko0i1r",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "z8utbftqr",
+									"text": "Use curl for lightweight command-line API testing and automation."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "445qljnai",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "v6w7czqkr",
+									"text": "Related Documentation"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "inwtnjfsc",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "gvvidsqoy",
+									"text": "Getting Started"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "yi1t0rgdb",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "z2724szqq",
+									"text": "Set up your project and make your first API request."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "xfb3879vs",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "86an500q2",
+									"text": "API Reference"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "0vvnb2xeq",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "fjvrh0ph9",
+									"text": "Explore available endpoints, request formats, and example responses."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "3boiniaqm",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "86ub8ywm9",
+									"text": "Guides"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "jr98cntkv",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "77frbcq9h",
+									"text": "Learn patterns for error handling, webhooks, and reliable integrations."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "pages:api",
+				"slug": "api",
+				"status": "published",
+				"data": {
+					"title": "API Reference",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "n74kf1hf7",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "zxaflg5lr",
+									"text": "API Reference"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "p5rlxqipq",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "sz37ccccy",
+									"text": "The DevHub API provides programmatic access to projects, users, and webhook subscriptions."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "6guwxx6xz",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "41tur9fhj",
+									"text": "All API requests use HTTPS and require authentication unless otherwise noted."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "y505qq7xq",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "x85ao3y3k",
+									"text": "Base URL"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "tp3bt53te",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "lnpzacwq6",
+									"text": "https://api.devhub.example.com/v1",
+									"marks": [
+										"wsef8tpzd"
+									]
 								}
 							],
-							"_key": "k0"
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "wsef8tpzd",
+									"href": "https://api.devhub.example.com/v1",
+									"blank": true
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "kg3h3rezk",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "yjam3kq16",
+									"text": "Authentication"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "yhp5c6t9m",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "22j23z6ok",
+									"text": "Include your API key as a Bearer token in the Authorization header."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "sam06om24",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "t1jfrkurx",
+									"text": "Authorization: Bearer YOUR_API_KEY"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "kqoz3swz3",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "miuhjxvvd",
+									"text": "Endpoints"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "qrf8csveu",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "lcixpf25f",
+									"text": "Projects"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "s7iruj0fa",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "zic20hl8b",
+									"text": "GET /v1/projects"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "8t4vc3zdo",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "4da8sd897",
+									"text": "Retrieve projects associated with your account."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "g3vqzlp9x",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "iy4mpo64a",
+									"text": "Users"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "3cfmayo21",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "syovyuyxo",
+									"text": "GET /v1/users"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "g648pipzj",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "cjou1ran1",
+									"text": "Retrieve users associated with your account."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "peyfh6yys",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "38dkcbbmt",
+									"text": "Webhooks"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "hij5m5qed",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "injg3nms0",
+									"text": "POST /v1/webhooks"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "8ubdq7zp0",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "hpdpyg1l0",
+									"text": "Create a webhook subscription for your application."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "enjk7l4tc",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "c4hs3c74y",
+									"text": "Interactive API Explorer"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "g99ou0lan",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "cjnqme9be",
+									"text": "Use the API Explorer to experiment with requests and inspect example responses without leaving the documentation."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "pages:guides/webhooks",
+				"slug": "guides/webhooks",
+				"status": "published",
+				"data": {
+					"title": "Working with Webhooks",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "kebcwfowl",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "emp5aciaw",
+									"text": "Working with Webhooks"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "2qfh5tm3x",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "1rhcf8e3m",
+									"text": "Webhooks allow your application to react to events without repeatedly polling the API."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "fp4qc8hlp",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "6olzg2f28",
+									"text": "Create an endpoint"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "dxmiirfyo",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "fisur97tq",
+									"text": "Create a publicly accessible HTTPS endpoint that can receive webhook events."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "zvxgi9iqr",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "85nhjlnok",
+									"text": "Verify incoming requests"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "h5d9naufi",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "97wbzqj8w",
+									"text": "Your application should verify the authenticity of incoming webhook requests before processing them."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "m5kai1in1",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "1kyvghuj9",
+									"text": "Process events safely"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "54zmmaxqg",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "elwo4zgm1",
+									"text": "Webhook deliveries can occasionally be retried. Design your handler to safely process the same event more than once."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "isix57gg4",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "qu86k799e",
+									"text": "A useful approach is to store the event ID and ignore an event if it has already been processed."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ihnr0fb7k",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "s1nxxp7vx",
+									"text": "Return a successful response"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "t2ccsdsei",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "as2q2b54w",
+									"text": "Return a successful HTTP response after the event has been accepted for processing."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "5h8jrqbjl",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "hr9i2p2kv",
+									"text": "For longer-running work, acknowledge the webhook first and process the event asynchronously."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "lulpn8z2l",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "fyt6j0cvg",
+									"text": "Handle failures"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "haqmi4r07",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "ux86c0qt5",
+									"text": "If processing fails, record enough information to diagnose the problem and allow the delivery to be retried when appropriate."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "r0n8y47he",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "3kgrviyai",
+									"text": "Example event"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "3134fvktp",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "6j2rcy3yw",
+									"text": "{"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "1r22jtkig",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "6rig7egkg",
+									"text": "  \"id\": \"evt_123\","
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "f1j4fb0e7",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "kys7fu2m9",
+									"text": "  \"type\": \"project.created\","
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "tugvvce7y",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "1pd4tsqfr",
+									"text": "  \"data\": {"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "hiyx9zih3",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "wz4nix1cl",
+									"text": "    \"project_id\": \"proj_123\""
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "fya99hccj",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "7k68vcv8s",
+									"text": "  }"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "zra4xrkb0",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "d1rmrna36",
+									"text": "}"
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "pages:guides/error-handling",
+				"slug": "guides/error-handling",
+				"status": "published",
+				"data": {
+					"title": "Error Handling",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "2yuvnszki",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "rrfnz4pde",
+									"text": "Error Handling"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "87r5ijp0b",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "uoxdqeafr",
+									"text": "A reliable integration should expect API requests to fail occasionally. Handling errors consistently makes your application easier to maintain and debug."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ghu7llqth",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "ndblk4b17",
+									"text": "HTTP status codes"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "r5gooogwe",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "xgzs1ugsk",
+									"text": "400 Bad Request"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "6gvr5lp15",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "fni8inat7",
+									"text": "The request is invalid or contains missing or incorrectly formatted parameters."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "gsqd7ob7m",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "vf4twbp2u",
+									"text": "401 Unauthorized"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "2nygiuk42",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "a144infw9",
+									"text": "The API key is missing, invalid, or expired."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "8vturpqk2",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "e4aokvola",
+									"text": "403 Forbidden"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "06ha9l40i",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "wljsf2fre",
+									"text": "The authenticated account does not have permission to perform the requested operation."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "0cveuhapp",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "1q5aq1z60",
+									"text": "404 Not Found"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "r763hsqk2",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "jtgzeizzw",
+									"text": "The requested resource does not exist."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "i1ag5e50n",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "po7dg80gh",
+									"text": "429 Too Many Requests"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "e7ssxisvb",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "7qmi5wbf0",
+									"text": "The application has exceeded the allowed request rate. Retry the request after waiting."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "cxoybtgpj",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "lknr5xrul",
+									"text": "500 Internal Server Error"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "sff0byuqk",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "8drlr3slw",
+									"text": "The server encountered an unexpected problem. Retry the request when appropriate."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "edbtx8an4",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "bb6jm6vvt",
+									"text": "Recommended approach"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "xztdaw3cf",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "o2ia2mq7w",
+									"text": "Check the HTTP status code first, then inspect the response body for additional information."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "tdmal7hcs",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "njgg0n49r",
+									"text": "For transient failures such as rate limits or server errors, implement retry logic with an appropriate backoff strategy."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "xw53glf01",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "kmxb63ale",
+									"text": "Avoid retrying authentication and validation errors without changing the request."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "1j3n9gblp",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "719miuuq0",
+									"text": "Example error response"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "bo410ld6d",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "7fz5jtaoo",
+									"text": "{"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "mr1xzhuqx",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "kf1noztbs",
+									"text": "  \"error\": {"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "55ylcosw1",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "j65nli6vg",
+									"text": "    \"code\": \"invalid_request\","
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "o3lxfxc7o",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "hg8u8s6vb",
+									"text": "    \"message\": \"The project ID is required.\""
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "1usf92lan",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "c5kj544yx",
+									"text": "  }"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "q1kmh1hel",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "5r0wy6ken",
+									"text": "}"
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "pages:guides",
+				"slug": "guides",
+				"status": "published",
+				"data": {
+					"title": "Guides",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "qzpcsxw0l",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "j2y940m96",
+									"text": "Guides"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "84qaklmow",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "udlj3yzma",
+									"text": "Practical guides for building reliable integrations with DevHub."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ptx762wpj",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "l9hi0wty7",
+									"text": "Error Handling"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "komxzcbrm",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "o1dh7r6jo",
+									"text": "Understand common API errors and build resilient error handling into your application."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "jridwc3be",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "9ntwsk3cn",
+									"text": "Working with Webhooks"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "7p8hxxrwh",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "bqd2unxmm",
+									"text": "Learn how to process webhook events safely and build reliable event-driven integrations."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "pages:docs",
+				"slug": "docs",
+				"status": "published",
+				"data": {
+					"title": "Documentation",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "4dpaki8d5",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "w0p4gxddn",
+									"text": "Documentation"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "2its8ewzw",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "ff3xj27dj",
+									"text": "Everything you need to integrate with DevHub."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "dn4ki8tcb",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "89xqo88z6",
+									"text": "Getting Started"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "hpl4um5i0",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "t39z86xy3",
+									"text": "Set up your project and make your first API request."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "mddc8qb0y",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "pwwfuxhxj",
+									"text": "Authentication"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "fz21s70ur",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "yghop7ro7",
+									"text": "Learn how to authenticate requests and securely manage API credentials."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "7f6ewpw7o",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "oi3oz7rtg",
+									"text": "API Reference"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "adwezu4wp",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "ouzaqczvw",
+									"text": "Explore the available DevHub API endpoints."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "k29b8txyp",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "1inppfyms",
+									"text": "Projects API"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "e448cp1by",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "g3695xl6d",
+									"text": "Learn how to retrieve and manage projects."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "sxfprvioo",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "bf8mb79e1",
+									"text": "Users API"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "am3edxcgt",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "g9qtst1dp",
+									"text": "Learn how to work with users associated with your account."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "vz8mu4f45",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "u918l123d",
+									"text": "Webhooks API"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "jioybtje2",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "m4g6by57w",
+									"text": "Create webhook subscriptions and receive event notifications."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "pages:api/webhooks",
+				"slug": "api/webhooks",
+				"status": "published",
+				"data": {
+					"title": "Webhooks API",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "2fmja3v83",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "zw6mecflj",
+									"text": "Webhooks API"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ugk3f0fjg",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "yb8bb43nj",
+									"text": "Webhooks allow your application to receive notifications when events occur in DevHub."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "u8yjcp9fn",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "g8ysuwr1v",
+									"text": "Create a webhook"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "bvfrokvkg",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "cqlrrm2p8",
+									"text": "POST /v1/webhooks"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "8fuh3soqv",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "w56ocdl4z",
+									"text": "Creates a webhook subscription for your application."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "d80hr2cc2",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "jmzhkpwfo",
+									"text": "Example request:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "q9kc1f4gn",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "jsv8ww6mf",
+									"text": "curl -X POST "
+								},
+								{
+									"_type": "span",
+									"_key": "emuehi8nf",
+									"text": "https://api.devhub.example.com/v1/webhooks",
+									"marks": [
+										"fewj9gyos"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "6yfxu7ven",
+									"text": " \\"
+								}
+							],
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "fewj9gyos",
+									"href": "https://api.devhub.example.com/v1/webhooks",
+									"blank": true
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "0xi55mv2o",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "87md251pp",
+									"text": "  -H \"Authorization: Bearer YOUR_API_KEY\" \\"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "5pzk1p646",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "0qu4mjm4i",
+									"text": "  -H \"Content-Type: application/json\" \\"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "o20yypom5",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "2xiyfv3mb",
+									"text": "  -d '{"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "jtmvsltbv",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "8juwn5dao",
+									"text": "    \"url\": \""
+								},
+								{
+									"_type": "span",
+									"_key": "smqvokb1q",
+									"text": "https://example.com/webhooks",
+									"marks": [
+										"pxkthbfrd"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "aj7da0b20",
+									"text": "\","
+								}
+							],
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "pxkthbfrd",
+									"href": "https://example.com/webhooks",
+									"blank": true
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "7ls3szfi6",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "7qnv7rf5p",
+									"text": "    \"events\": [\"project.created\", \"project.updated\"]"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "13m21lxvx",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "fbkfrnme8",
+									"text": "  }'"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "iylro7vs3",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "8gov458hm",
+									"text": "Example response:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "hg8ciwa7j",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "l9t6dsve2",
+									"text": "{"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "dmc1vk7nq",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "0dnpeorl1",
+									"text": "  \"id\": \"wh_123\","
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "0j04zwvnk",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "5s6umpexj",
+									"text": "  \"url\": \""
+								},
+								{
+									"_type": "span",
+									"_key": "raz9nbj0y",
+									"text": "https://example.com/webhooks",
+									"marks": [
+										"ktaiqopsz"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "rk86u7scb",
+									"text": "\","
+								}
+							],
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "ktaiqopsz",
+									"href": "https://example.com/webhooks",
+									"blank": true
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "zzyjypxhf",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "x85l4twru",
+									"text": "  \"status\": \"active\""
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "prjftkmcy",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "oc9gg3huz",
+									"text": "}"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "2bqkae6vj",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "3ykfwd4q5",
+									"text": "Security"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "av6ljctr9",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "fl53tv2db",
+									"text": "Your webhook endpoint should verify incoming requests before processing events."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "eyen6jntp",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "w7giphv40",
+									"text": "Retries"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "t27eern75",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "3xnpmazi0",
+									"text": "If your endpoint does not successfully process an event, the delivery may be retried."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ymwbay79n",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "fyni57pak",
+									"text": "Related guide"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "1ndcwq9dg",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "n9yvac1oy",
+									"text": "See Working with Webhooks for recommendations on handling webhook events reliably."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "pages:api/users",
+				"slug": "api/users",
+				"status": "published",
+				"data": {
+					"title": "Users API",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "hyq94zh63",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "sahpe8biq",
+									"text": "Users API"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "zo7biz0st",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "iyltx1t88",
+									"text": "The Users API provides access to users associated with your account."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "cj8vneg48",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "te8013j81",
+									"text": "List users"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "idaw74is8",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "lwl6m9ep6",
+									"text": "GET /v1/users"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "fbjg6vkjl",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "8di98mqse",
+									"text": "Returns a list of users."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "3jj28z11j",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "udh3vwvyl",
+									"text": "Example request:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "vwycog5zi",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "mjac7ouup",
+									"text": "curl "
+								},
+								{
+									"_type": "span",
+									"_key": "dq9yr0lls",
+									"text": "https://api.devhub.example.com/v1/users",
+									"marks": [
+										"uhmq1j96p"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "it9uhcttc",
+									"text": " \\"
+								}
+							],
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "uhmq1j96p",
+									"href": "https://api.devhub.example.com/v1/users",
+									"blank": true
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "wmad6gnvp",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "p72lwqpuh",
+									"text": "  -H \"Authorization: Bearer YOUR_API_KEY\""
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "iu3p1fai3",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "4jzyy97f1",
+									"text": "Example response:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "7q0rjrhz4",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "jtwg6hrk3",
+									"text": "{"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "d8zdptp7r",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "wuoz5dtn8",
+									"text": "  \"data\": ["
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "g7euzvvt2",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "bssrpp7pc",
+									"text": "    {"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "qjyrkytuz",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "8izzis3cd",
+									"text": "      \"id\": \"usr_123\","
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "hl8y1v2gn",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "3vnx4ivpp",
+									"text": "      \"name\": \"Jane Doe\","
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "m2ce3jomh",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "i3l3nqj5x",
+									"text": "      \"email\": \""
+								},
+								{
+									"_type": "span",
+									"_key": "h10pfkzmv",
+									"text": "jane@example.com",
+									"marks": [
+										"xr8c6uayo"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "bon1ehdyp",
+									"text": "\""
+								}
+							],
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "xr8c6uayo",
+									"href": "mailto:jane@example.com",
+									"blank": true
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "4kio2t2ni",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "u9fi8gw7i",
+									"text": "    }"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "idbmzo2hi",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "mfo7tejsg",
+									"text": "  ]"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "qjvonryot",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "slhj3c82",
+									"text": "}"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "wtukgnui9",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "972rxnmqe",
+									"text": "Authentication"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "cdv0kkpo9",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "mz1qyt6tl",
+									"text": "This endpoint requires a valid Bearer token."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "c5847yurz",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "z2c6bdton",
+									"text": "Errors"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "xrdddx9nb",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "y89of3kw0",
+									"text": "401 Unauthorized"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "997qzumwz",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "3nmxfh118",
+									"text": "The API key is missing or invalid."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ye7jnvw65",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "3bxm4tbx6",
+									"text": "403 Forbidden"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "g222k3gtb",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "ptb9mbxkq",
+									"text": "The authenticated account does not have permission to access the requested resource."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "pages:api/projects",
+				"slug": "api/projects",
+				"status": "published",
+				"data": {
+					"title": "Projects API",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "np2ivoz49",
+							"style": "h1",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "yji5taa00",
+									"text": "Projects API"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "78oiov3dc",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "gkky1jraq",
+									"text": "The Projects API allows you to retrieve information about projects associated with your account."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "926pvi6jb",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "oyrqzzxvl",
+									"text": "List projects"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "3wdnsg45z",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "uu11m4mq2",
+									"text": "GET",
+									"marks": [
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "hyysqq49j",
+									"text": " "
+								},
+								{
+									"_type": "span",
+									"_key": "dek5pusct",
+									"text": "/v1/projects",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ts7o0n491",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "yue4fmmwg",
+									"text": "Returns a list of projects available to the authenticated account."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "dqkm3y6k2",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "mk9si70op",
+									"text": "Authentication"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "3gh748k44",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "kzjxy6m8w",
+									"text": "This endpoint requires a valid Bearer token."
+								}
+							]
+						},
+						{
+							"_type": "code",
+							"_key": "5rhgqwn66",
+							"code": "Authorization: Bearer YOUR_API_KEY\n",
+							"language": "text"
+						},
+						{
+							"_type": "block",
+							"_key": "shszn7z4v",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "qurz3qk3r",
+									"text": "Request"
+								}
+							]
+						},
+						{
+							"_type": "code",
+							"_key": "qja0runj3",
+							"code": "curl https://api.devhub.example.com/v1/projects \\\n  -H \"Authorization: Bearer YOUR_API_KEY\"\n",
+							"language": "bash"
+						},
+						{
+							"_type": "block",
+							"_key": "a3enp11fx",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "wodg1qx07",
+									"text": "Response"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "1qgizdrqb",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "y4tqblk6i",
+									"text": "200 OK",
+									"marks": [
+										"strong"
+									]
+								}
+							]
+						},
+						{
+							"_type": "code",
+							"_key": "nuimlp8fa",
+							"code": "{\n  \"data\": [\n    {\n      \"id\": \"proj_123\",\n      \"name\": \"My Project\",\n      \"status\": \"active\"\n    }\n  ]\n}\n",
+							"language": "json"
+						},
+						{
+							"_type": "block",
+							"_key": "2wd7t1y8i",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "3iv0ynlgj",
+									"text": "Errors"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "1xoe3iaya",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "cwbot28u4",
+									"text": "401 Unauthorized",
+									"marks": [
+										"strong"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "4wp9tyope",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "5bp87v11n",
+									"text": "The API key is missing or invalid."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "7ik17cfga",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "0aatmyr5k",
+									"text": "403 Forbidden",
+									"marks": [
+										"strong"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "7fbqzp0wx",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "1hpe3icyz",
+									"text": "The authenticated account does not have permission to access the requested resource."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ulsbjxsqp",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "5pl3s4zrn",
+									"text": "Try it"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "dx6th7zvz",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "ig6b7jvfi",
+									"text": "Experiment with this endpoint using the interactive API Explorer."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "xpn9m96uo",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "q3498n9ga",
+									"text": "Try it in API Explorer →",
+									"marks": [
+										"strong"
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "pages:authentication",
+				"slug": "authentication",
+				"status": "published",
+				"data": {
+					"title": "Authentication",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "bax3peb6t",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "b9ycn7rmz",
+									"text": "Authentication"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "foh3y7oos",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "91joruhj6",
+									"text": "DevHub API requests use Bearer token authentication."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "mzd6efrww",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "qwnj3gf0w",
+									"text": "API keys"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "hctlqr6hf",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "yboniom4w",
+									"text": "Each project has its own API key. Include the key in the Authorization header of every authenticated request."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "nd6oia5aw",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "yoeqt304e",
+									"text": "Example:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "jv2yuwxx8",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "3s8mt1kog",
+									"text": "curl "
+								},
+								{
+									"_type": "span",
+									"_key": "t1mjw95k7",
+									"text": "https://api.devhub.example.com/v1/projects",
+									"marks": [
+										"39blw90tp"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "q3dyxpaw4",
+									"text": " \\"
+								}
+							],
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "39blw90tp",
+									"href": "https://api.devhub.example.com/v1/projects",
+									"blank": true
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "2xv2xwhoe",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "mfog0lhdi",
+									"text": "  -H \"Authorization: Bearer YOUR_API_KEY\""
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "aimxxaatv",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "fy9fjg9pb",
+									"text": "Keep your API key secure"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "vo18n97ft",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "h2v16si8g",
+									"text": "Never expose API keys in browser-side JavaScript, public repositories, or client-side applications."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "iyybxl4eh",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "j8m3pdq8y",
+									"text": "Store credentials in environment variables or another secure server-side configuration mechanism."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "qa3h3a4do",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "l4lxsggfb",
+									"text": "Authentication errors"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "8zn6oliy3",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "8s039apfv",
+									"text": "If authentication fails, the API returns an appropriate HTTP status code and an error response describing the problem."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "j4kbgwmmk",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "rhalkdg4e",
+									"text": "Next steps"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "954njpacj",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "gnh9yji0c",
+									"text": "See the Projects API reference to learn how to retrieve and manage projects."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "pages:getting-started",
+				"slug": "getting-started",
+				"status": "published",
+				"data": {
+					"title": "Getting Started",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "uvss95vqg",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "5fvlis8ae",
+									"text": "Getting Started"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "dxqdebddi",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "ptto93fsj",
+									"text": "Welcome to DevHub. This guide walks you through creating a project and making your first API request."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "sv9b7jgo9",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "6mxjylk3x",
+									"text": "Prerequisites"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "w2uctoe0i",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "5iphtzzhw",
+									"text": "Before you begin, make sure you have:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "hsxnzswep",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "n260oyczx",
+									"text": "• An active DevHub account"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ws2pv5ndp",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "x38rrjbjy",
+									"text": "• An API key"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "zlg2pt4l2",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "bks2pjq27",
+									"text": "• A project to work with"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "bw4cjs7lv",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "8uqbzjjhm",
+									"text": "• A tool such as curl, Postman, or your preferred HTTP client"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "d87spuv5k",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "ivopkrnuq",
+									"text": "Create a project"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "9o8dr3aw5",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "jkgfsj3th",
+									"text": "Create a project from the DevHub dashboard. Each project has its own configuration and API credentials."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "7fb4aqvo4",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "vtfvg0bvh",
+									"text": "Get your API key"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "56n1h39tr",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "awpm20z6b",
+									"text": "Open your project settings and create an API key. Keep your API key private and never commit it to source control."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "4lxbe3zhx",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "foiqd5b3o",
+									"text": "Make your first request"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "2wo89f4g6",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "hhcm3b7rw",
+									"text": "Use your API key in the Authorization header when making requests."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "yb547tsmj",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "v2xjrjzth",
+									"text": "Example:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "6yekh9410",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "259xwty2y",
+									"text": "curl "
+								},
+								{
+									"_type": "span",
+									"_key": "6mu3zwpan",
+									"text": "https://api.devhub.example.com/v1/projects",
+									"marks": [
+										"ze2je5xp1"
+									]
+								},
+								{
+									"_type": "span",
+									"_key": "z3ajdf5pc",
+									"text": " \\"
+								}
+							],
+							"markDefs": [
+								{
+									"_type": "link",
+									"_key": "ze2je5xp1",
+									"href": "https://api.devhub.example.com/v1/projects",
+									"blank": true
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "cc9850lb3",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "oviypfnfr",
+									"text": "  -H \"Authorization: Bearer YOUR_API_KEY\""
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "sg5tbfq6h",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "brlywibzn",
+									"text": "Handle the response"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "s2d2g3g7j",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "ymli3duon",
+									"text": "A successful request returns a JSON response containing the requested project data."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "rs87bh9jw",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "elacjhhtv",
+									"text": "Next steps"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "6tbhlu38v",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "svga0elcm",
+									"text": "Continue to the Authentication guide to learn about API keys, request authentication, and credential management."
+								}
+							]
 						}
 					]
 				}
@@ -178,12 +3067,416 @@
 		],
 		"posts": [
 			{
-				"id": "post-1",
-				"slug": "welcome",
+				"id": "posts:new-api-explorer",
+				"slug": "new-api-explorer",
 				"status": "published",
 				"data": {
+					"title": "New API Explorer",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "7blsnbvhq",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "a18r0ke2v",
+									"text": "The DevHub documentation now includes an interactive API Explorer."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "2znkf6tcc",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "tn8kncggr",
+									"text": "The explorer provides example Projects, Users, and Webhooks endpoints and lets developers build a request, provide an API key, and inspect the resulting response."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "cwj6hwil1",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "71syvrzrs",
+									"text": "The explorer also demonstrates loading and authentication error states."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "h6hu3rr4k",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "pvbz80tax",
+									"text": "The API Explorer is available from the API Reference section."
+								}
+							]
+						}
+					],
+					"excerpt": "Developers can now experiment with DevHub API endpoints directly from the API documentation."
+				},
+				"taxonomies": {
+					"category": [
+						"updates"
+					],
+					"tag": [
+						"starter"
+					]
+				}
+			},
+			{
+				"id": "posts:improved-webhook-guidance",
+				"slug": "improved-webhook-guidance",
+				"status": "published",
+				"data": {
+					"title": "Improved webhook guidance",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "db4ebktae",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "hx2ifob5h",
+									"text": "We have expanded the webhook documentation with practical guidance for building reliable integrations."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "s2ytv3bx8",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "a1glcsvfi",
+									"text": "The new guide covers:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "6wcqc9763",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "i9ja2l8zb",
+									"text": "- Creating a secure webhook endpoint"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "c4n92tsyd",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "dtskjlt0y",
+									"text": "- Verifying incoming requests"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "2iq8v0azx",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "hk4eil8th",
+									"text": "- Handling duplicate event deliveries"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "1dxsg1djg",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "xt96ed6qy",
+									"text": "- Returning successful responses quickly"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "bja9tavtu",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "m4prlet2l",
+									"text": "- Processing longer-running work asynchronously"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ku1us8jht",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "rm00bmm6s",
+									"text": "- Handling failed deliveries and retries"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "h82y86fwj",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "v4woj4dpp",
+									"text": "These patterns help applications process webhook events safely as integrations grow."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "2xwviynf2",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "9ncrjctjd",
+									"text": "See the Working with Webhooks guide for the complete recommendations."
+								}
+							]
+						}
+					],
+					"excerpt": "New documentation explains webhook verification, retries, idempotency, and reliable event processing."
+				},
+				"taxonomies": {
+					"category": [
+						"updates"
+					],
+					"tag": [
+						"starter"
+					]
+				}
+			},
+			{
+				"id": "posts:devhub-api-v10-is-now-available",
+				"slug": "devhub-api-v10-is-now-available",
+				"status": "published",
+				"data": {
+					"title": "DevHub API v1.0 is now available",
+					"content": [
+						{
+							"_type": "block",
+							"_key": "7fuxzwqfh",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "yklarawdu",
+									"text": "DevHub API v1.0 is now available."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "q4moj76zw",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "rcrhomigh",
+									"text": "The first version of the DevHub API provides a simple foundation for integrating projects, users, and webhook subscriptions into your applications."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "oii5norp0",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "cffr53fnu",
+									"text": "What's included"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "l6tenev24",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "w02s6nkbh",
+									"text": "Projects API"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "bqn08u2fx",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "04cyuf06t",
+									"text": "Retrieve projects associated with your account."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "xdx9i2o7f",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "xrz7outo9",
+									"text": "Users API"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "dpagec5k9",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "aiyry5rnf",
+									"text": "Retrieve users associated with your account."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "hplawtuo1",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "3t4wbfvt8",
+									"text": "Webhooks API"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "y9oxou47d",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "2nrysa0au",
+									"text": "Create webhook subscriptions and receive event notifications."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "z4mnqe9ik",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "88s2vv1wt",
+									"text": "Documentation"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "ok92h9jx1",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "d3tjsu1yh",
+									"text": "The API reference includes request examples, authentication details, response formats, and common error responses."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "p56ggg1xz",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "o0xgasjey",
+									"text": "API Explorer"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "nnrhvfgf3",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "0a6bya5fz",
+									"text": "The new API Explorer allows developers to experiment with example requests and responses directly from the documentation."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "a8wqudh2v",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "2jbn4lz6i",
+									"text": "What's next"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"_key": "95pq99bq0",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "j7amm9qyy",
+									"text": "Future releases will expand the available endpoints and improve the developer experience around integrations."
+								}
+							]
+						}
+					],
+					"excerpt": "The first version of the DevHub API is now available with Projects, Users, and Webhooks endpoints."
+				},
+				"taxonomies": {
+					"category": [
+						"updates"
+					],
+					"tag": [
+						"starter"
+					]
+				}
+			},
+			{
+				"id": "posts:welcome",
+				"slug": "welcome",
+				"status": "draft",
+				"data": {
 					"title": "Welcome",
-					"excerpt": "Your first post. Replace this with your own content.",
 					"content": [
 						{
 							"_type": "block",
@@ -221,11 +3514,17 @@
 							],
 							"_key": "k4"
 						}
-					]
+					],
+					"excerpt": "Your first post. Replace this with your own content."
 				},
 				"taxonomies": {
-					"category": ["general"],
-					"tag": ["starter", "example"]
+					"category": [
+						"general"
+					],
+					"tag": [
+						"starter",
+						"example"
+					]
 				}
 			}
 		]
