@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 type Method = "GET" | "POST";
 
@@ -71,9 +71,17 @@ const endpoints: Endpoint[] = [
 export default function ApiExplorer() {
   const [selectedId, setSelectedId] = useState("projects");
   const [apiKey, setApiKey] = useState("YOUR_API_KEY");
-  const [webhookUrl, setWebhookUrl] = useState(
-    "https://example.com/webhooks",
-  );
+  const [webhookUrl, setWebhookUrl] = useState("https://example.com/webhooks");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const endpoint = params.get("endpoint");
+
+    if (endpoint && endpoints.some((item) => item.id === endpoint)) {
+      setSelectedId(endpoint);
+    }
+  }, []);
+
   const [requestState, setRequestState] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
@@ -103,26 +111,64 @@ export default function ApiExplorer() {
 
   function handleSend() {
     setRequestState("loading");
-  
+
     window.setTimeout(() => {
       if (!apiKey || apiKey === "YOUR_API_KEY") {
         setRequestState("error");
         return;
       }
-  
+
       setRequestState("success");
     }, 700);
   }
+  const codeExamples = {
+    curl: [
+      `curl ${request.url} \\`,
+      `  -H "Authorization: Bearer ${apiKey}" \\`,
+      ...(requestBody
+        ? [
+            `  -H "Content-Type: application/json" \\`,
+            `  -d '${JSON.stringify(requestBody)}'`,
+          ]
+        : []),
+    ].join("\n"),
 
+    javascript: [
+      `const response = await fetch("${request.url}", {`,
+      `  method: "${request.method}",`,
+      `  headers: {`,
+      `    Authorization: "Bearer ${apiKey}",`,
+      ...(requestBody
+        ? [
+            `    "Content-Type": "application/json",`,
+            `  },`,
+            `  body: ${JSON.stringify(requestBody)},`,
+          ]
+        : [`  },`]),
+      `});`,
+      ``,
+      `const data = await response.json();`,
+    ].join("\n"),
+
+    python: [
+      `import requests`,
+      ``,
+      `response = requests.${request.method.toLowerCase()}(`,
+      `    "${request.url}",`,
+      `    headers={"Authorization": "Bearer ${apiKey}"},`,
+      ...(requestBody ? [`    json=${JSON.stringify(requestBody)},`] : []),
+      `)`,
+      ``,
+      `data = response.json()`,
+    ].join("\n"),
+  };
   return (
     <section className="api-explorer">
       <div className="explorer-header">
         <div>
           <p className="section-eyebrow">TRY IT</p>
           <h2>API Explorer</h2>
-          <p>
-            Build a request, send it, and inspect the example response.
-          </p>
+          <p>Build a request, send it, and inspect the example response.</p>
         </div>
       </div>
 
@@ -211,38 +257,87 @@ export default function ApiExplorer() {
 
               <pre>{JSON.stringify(request, null, 2)}</pre>
             </div>
+            <div className="output-panel code-panel">
+              <div className="output-header">
+                <span>Code Examples</span>
+              </div>
 
-            <div className="output-panel">
-            <div className="output-header">
-              <span>Response</span>
+              <div className="code-example">
+                <div className="code-example-header">
+                  <span>cURL</span>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      navigator.clipboard.writeText(codeExamples.curl)
+                    }
+                  >
+                    Copy
+                  </button>
+                </div>
+                <pre>{codeExamples.curl}</pre>
+              </div>
 
-              {requestState === "success" && (
-                <span className="response-status">200 OK</span>
-              )}
+              <div className="code-example">
+                <div className="code-example-header">
+                  <span>JavaScript</span>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      navigator.clipboard.writeText(codeExamples.javascript)
+                    }
+                  >
+                    Copy
+                  </button>
+                </div>
+                <pre>{codeExamples.javascript}</pre>
+              </div>
 
-              {requestState === "error" && (
-                <span className="response-error">401 Unauthorized</span>
-              )}
+              <div className="code-example">
+                <div className="code-example-header">
+                  <span>Python</span>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      navigator.clipboard.writeText(codeExamples.python)
+                    }
+                  >
+                    Copy
+                  </button>
+                </div>
+                <pre>{codeExamples.python}</pre>
+              </div>
             </div>
+            <div className="output-panel">
+              <div className="output-header">
+                <span>Response</span>
 
-            <pre>
-  {requestState === "loading"
-    ? "// Sending request..."
-    : requestState === "success"
-      ? JSON.stringify(selectedEndpoint.response, null, 2)
-      : requestState === "error"
-        ? JSON.stringify(
-            {
-              error: {
-                code: "invalid_api_key",
-                message: "The API key is missing or invalid.",
-              },
-            },
-            null,
-            2,
-          )
-        : '// Click "Send Request" to see the response'}
-</pre>
+                {requestState === "success" && (
+                  <span className="response-status">200 OK</span>
+                )}
+
+                {requestState === "error" && (
+                  <span className="response-error">401 Unauthorized</span>
+                )}
+              </div>
+
+              <pre>
+                {requestState === "loading"
+                  ? "// Sending request..."
+                  : requestState === "success"
+                    ? JSON.stringify(selectedEndpoint.response, null, 2)
+                    : requestState === "error"
+                      ? JSON.stringify(
+                          {
+                            error: {
+                              code: "invalid_api_key",
+                              message: "The API key is missing or invalid.",
+                            },
+                          },
+                          null,
+                          2,
+                        )
+                      : '// Click "Send Request" to see the response'}
+              </pre>
             </div>
           </div>
         </div>

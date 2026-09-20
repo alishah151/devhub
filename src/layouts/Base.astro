@@ -1,167 +1,146 @@
-
 ---
 import { getSiteSettings } from "emdash";
-import {
-        EmDashHead,
-        EmDashBodyStart,
-        EmDashBodyEnd,
-} from "emdash/ui";
+import { EmDashHead, EmDashBodyStart, EmDashBodyEnd } from "emdash/ui";
 import { createPublicPageContext } from "emdash/page";
 import LiveSearch from "emdash/ui/search";
 import { resolveStarterSiteIdentity } from "../utils/site-identity";
 import "../styles/global.css";
 
 interface Props {
-        title: string;
-        pageTitle?: string | null;
-        description?: string | null;
-        image?: string | null;
-        canonical?: string | null;
-        content?: { collection: string; id: string; slug?: string | null };
+  title: string;
+  pageTitle?: string | null;
+  description?: string | null;
+  image?: string | null;
+  canonical?: string | null;
+  content?: { collection: string; id: string; slug?: string | null };
 }
 
-const { title, pageTitle, description, image, canonical, content } = Astro.props;
+const { title, pageTitle, description, image, canonical, content } =
+  Astro.props;
 
-const { siteTitle, siteTagline, siteLogo } =
-        resolveStarterSiteIdentity(await getSiteSettings());
+const { siteTitle, siteTagline, siteLogo } = resolveStarterSiteIdentity(
+  await getSiteSettings(),
+);
 
-const fullTitle = title.includes(siteTitle)
-        ? title
-        : `${title} — ${siteTitle}`;
+const fullTitle = title.includes(siteTitle) ? title : `${title} — ${siteTitle}`;
 
 const pageDescription = description ?? siteTagline;
 
 const pageCtx = createPublicPageContext({
-        Astro,
-        kind: content ? "content" : "custom",
-        pageType: "website",
-        title: fullTitle,
-        pageTitle: pageTitle ?? title,
-        description: pageDescription,
-        canonical,
-        image,
-        content,
-        siteName: siteTitle,
+  Astro,
+  kind: content ? "content" : "custom",
+  pageType: "website",
+  title: fullTitle,
+  pageTitle: pageTitle ?? title,
+  description: pageDescription,
+  canonical,
+  image,
+  content,
+  siteName: siteTitle,
 });
 ---
 
 <!doctype html>
 <html lang="en">
-        <head>
-                <meta charset="UTF-8" />
-                <meta
-                        name="viewport"
-                        content="width=device-width, initial-scale=1.0"
-                />
-                <title>{fullTitle}</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
 
-                {pageDescription && (
-                        <meta name="description" content={pageDescription} />
-                )}
+    {pageDescription && <meta name="description" content={pageDescription} />}
 
-                {canonical && <link rel="canonical" href={canonical} />}
+    {canonical && <link rel="canonical" href={canonical} />}
 
-                <EmDashHead page={pageCtx} />
-        </head>
+    <EmDashHead page={pageCtx} />
+  </head>
 
-        <body>
-                <EmDashBodyStart page={pageCtx} />
+  <body>
+    <EmDashBodyStart page={pageCtx} />
 
-                <header class="site-header">
-                        <div class="header-inner">
-                                <a class="brand" href="/">
-                                        {siteLogo ? (
-                                                <img
-                                                        src={siteLogo.url}
-                                                        alt={siteLogo.alt || siteTitle}
-                                                />
-                                        ) : (
-                                                <span class="brand-mark">D</span>
-                                        )}
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/">
+          {siteLogo ? (
+            <img src={siteLogo.url} alt={siteLogo.alt || siteTitle} />
+          ) : (
+            <span class="brand-mark">D</span>
+          )}
 
-                                        <span class="brand-name">{siteTitle}</span>
-                                </a>
+          <span class="brand-name">{siteTitle}</span>
+        </a>
 
-                                <nav class="top-nav" aria-label="Main navigation">
-                                        <a href="/docs">Docs</a>
-                                        <a href="/api">API Reference</a>
-                                        <a href="/guides">Guides</a>
-                                        <a href="/posts">Changelog</a>
-                                </nav>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="/docs">Docs</a>
+          <a href="/api">API Reference</a>
+          <a href="/guides">Guides</a>
+          <a href="/posts">Changelog</a>
+        </nav>
 
-                                <div class="header-search">
-                                        <LiveSearch
-                                                placeholder="Search documentation..."
-                                                collections={["posts", "pages"]}
-                                        />
-                                </div>
-                        </div>
-                </header>
+        <div class="header-search">
+          <LiveSearch
+            placeholder="Search documentation..."
+            collections={["posts", "pages"]}
+          />
+        </div>
+      </div>
+    </header>
 
-                <div class="portal-layout">
-                        <aside class="docs-sidebar">
-                                <div class="sidebar-section">
-                                        <p class="sidebar-heading">Documentation</p>
+    <div class="portal-layout">
+      <aside class="docs-sidebar">
+        <div class="sidebar-section">
+          <p class="sidebar-heading">Documentation</p>
 
-                                        <a href="/getting-started">
-                                                Getting Started
-                                        </a>
+          <a href="/getting-started">Getting Started</a>
 
-                                        <a href="/authentication">
-                                                Authentication
-                                        </a>
-                                </div>
+          <a href="/authentication">Authentication</a>
+        </div>
 
-                                <div class="sidebar-section">
-                                        <p class="sidebar-heading">API Reference</p>
+        <div class="sidebar-section">
+          <p class="sidebar-heading">API Reference</p>
 
-                                        <a href="/api/projects">Projects</a>
-                                        <a href="/api/users">Users</a>
-                                        <a href="/api/webhooks">Webhooks</a>
-                                </div>
+          <a href="/api/projects">Projects</a>
+          <a href="/api/users">Users</a>
+          <a href="/api/webhooks">Webhooks</a>
+        </div>
 
-                                <div class="sidebar-section">
-                                        <p class="sidebar-heading">Guides</p>
+        <div class="sidebar-section">
+          <p class="sidebar-heading">Guides</p>
 
-                                        <a href="/guides/error-handling">
-                                                Error Handling
-                                        </a>
+          <a href="/guides/error-handling">Error Handling</a>
 
-                                        <a href="/guides/webhooks">
-                                                Working with Webhooks
-                                        </a>
-                                </div>
+          <a href="/guides/webhooks">Working with Webhooks</a>
+        </div>
 
-                                <div class="sidebar-section">
-                                        <p class="sidebar-heading">Resources</p>
+        <div class="sidebar-section">
+          <p class="sidebar-heading">Resources</p>
 
-                                        <a href="/resources">Resources</a>
-                                </div>
-                        </aside>
+          <a href="/resources">Resources</a>
+        </div>
+      </aside>
 
-                        <main class="main-content">
-                                <div class="content-container">
-                                        <slot />
-                                </div>
-                        </main>
-                </div>
+      <main class="main-content">
+        <div class="content-container">
+          <slot />
+        </div>
+      </main>
+    </div>
 
-								<footer class="site-footer">
-													<div class="footer-inner">
-																	<div>
-																					<strong>{siteTitle}</strong>
-																					<p>{siteTagline}</p>
-																	</div>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <strong>{siteTitle}</strong>
+          <p>{siteTagline}</p>
+        </div>
 
-																	<div class="footer-links">
-																					<a href="/docs">Documentation</a>
-																					<a href="/api">API Reference</a>
-																					<a href="/guides">Guides</a>
-																					<a href="/posts">Changelog</a>
-																	</div>
-													</div>
-									</footer>
+        <div class="footer-links">
+          <a href="/docs">Documentation</a>
+          <a href="/api">API Reference</a>
+          <a href="/guides">Guides</a>
+          <a href="/posts">Changelog</a>
+        </div>
+      </div>
+    </footer>
 
-                <EmDashBodyEnd page={pageCtx} />
-        </body>
+    <EmDashBodyEnd page={pageCtx} />
+  </body>
 </html>
