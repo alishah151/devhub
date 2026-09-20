@@ -1,6 +1,6 @@
-```astro
+
 ---
-import { getMenu, getSiteSettings } from "emdash";
+import { getSiteSettings } from "emdash";
 import {
         EmDashHead,
         EmDashBodyStart,
@@ -30,8 +30,6 @@ const fullTitle = title.includes(siteTitle)
         : `${title} — ${siteTitle}`;
 
 const pageDescription = description ?? siteTagline;
-
-const menu = await getMenu("primary");
 
 const pageCtx = createPublicPageContext({
         Astro,
@@ -167,4 +165,3 @@ const pageCtx = createPublicPageContext({
                 <EmDashBodyEnd page={pageCtx} />
         </body>
 </html>
-```

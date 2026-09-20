@@ -7,8 +7,8 @@
 		"author": "EmDash"
 	},
 	"settings": {
-		"title": "My Site",
-		"tagline": "Built with EmDash"
+    "title": "DevHub",
+    "tagline": "Developer documentation, API reference, and practical guides."
 	},
 	"collections": [
 		{
