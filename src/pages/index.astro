@@ -1,48 +1,197 @@
+
 ---
 import { getEmDashCollection, getSiteSettings } from "emdash";
-import { Image } from "emdash/ui";
 import Base from "../layouts/Base.astro";
 import { resolveStarterSiteIdentity } from "../utils/site-identity";
 
+const { siteTitle, siteTagline } =
+        resolveStarterSiteIdentity(await getSiteSettings());
+
 const { entries: posts, cacheHint } = await getEmDashCollection("posts", {
-	orderBy: { published_at: "desc" },
+        orderBy: { published_at: "desc" },
 });
-const { siteTitle, siteTagline } = resolveStarterSiteIdentity(await getSiteSettings());
+
 if (Astro.cache?.enabled) Astro.cache.set(cacheHint);
 ---
 
 <Base title={siteTitle} description={siteTagline}>
-	<h1>Recent Posts</h1>
+        <section class="hero">
+                <div class="hero-eyebrow">DEVELOPER PLATFORM</div>
 
-	{
-		posts.length === 0 ? (
-			<p>
-				No posts yet.{" "}
-				<a href="/_emdash/admin/content/posts/new">Create one</a>.
-			</p>
-		) : (
-			<ul>
-				{posts.map((post) => (
-					<li>
-						<a href={`/posts/${post.id}`}>
-							{post.data.featured_image && (
-								<Image image={post.data.featured_image} />
-							)}
-							<h2>{post.data.title}</h2>
-						</a>
-						{post.data.excerpt && <p>{post.data.excerpt}</p>}
-						{post.data.publishedAt && (
-							<time datetime={post.data.publishedAt.toISOString()}>
-								{post.data.publishedAt.toLocaleDateString("en-US", {
-									year: "numeric",
-									month: "long",
-									day: "numeric",
-								})}
-							</time>
-						)}
-					</li>
-				))}
-			</ul>
-		)
-	}
+                <h1>
+                        Build faster with
+                        <span>clear documentation.</span>
+                </h1>
+
+                <p class="hero-description">
+                        Developer documentation, API reference, and practical
+                        guides for building reliable integrations.
+                </p>
+
+                <div class="hero-actions">
+                        <a class="button button-primary" href="/getting-started">
+                                Get Started
+                        </a>
+
+                        <a class="button button-secondary" href="/api">
+                                API Reference
+                        </a>
+                </div>
+        </section>
+
+        <section class="portal-section">
+                <div class="section-heading">
+                        <div>
+                                <p class="section-eyebrow">START HERE</p>
+                                <h2>Documentation</h2>
+                        </div>
+
+                        <a href="/getting-started">View documentation →</a>
+                </div>
+
+                <div class="card-grid">
+                        <a class="feature-card" href="/getting-started">
+                                <div class="card-icon">01</div>
+                                <h3>Getting Started</h3>
+                                <p>
+                                        Set up your project and make your first
+                                        API request.
+                                </p>
+                        </a>
+
+                        <a class="feature-card" href="/authentication">
+                                <div class="card-icon">02</div>
+                                <h3>Authentication</h3>
+                                <p>
+                                        Learn how to authenticate requests and
+                                        manage API credentials.
+                                </p>
+                        </a>
+
+                        <a class="feature-card" href="/resources">
+                                <div class="card-icon">03</div>
+                                <h3>Resources</h3>
+                                <p>
+                                        Explore SDKs, examples, tools, and other
+                                        developer resources.
+                                </p>
+                        </a>
+                </div>
+        </section>
+
+        <section class="portal-section">
+                <div class="section-heading">
+                        <div>
+                                <p class="section-eyebrow">REFERENCE</p>
+                                <h2>API Reference</h2>
+                        </div>
+
+                        <a href="/api">Explore APIs →</a>
+                </div>
+
+                <div class="api-list">
+                        <a href="/api/projects" class="api-row">
+                                <div>
+                                        <span class="method-badge method-get">GET</span>
+                                        <code>/api/projects</code>
+                                </div>
+                                <span>Projects</span>
+                        </a>
+
+                        <a href="/api/users" class="api-row">
+                                <div>
+                                        <span class="method-badge method-get">GET</span>
+                                        <code>/api/users</code>
+                                </div>
+                                <span>Users</span>
+                        </a>
+
+                        <a href="/api/webhooks" class="api-row">
+                                <div>
+                                        <span class="method-badge method-post">POST</span>
+                                        <code>/api/webhooks</code>
+                                </div>
+                                <span>Webhooks</span>
+                        </a>
+                </div>
+        </section>
+
+        <section class="portal-section">
+                <div class="section-heading">
+                        <div>
+                                <p class="section-eyebrow">LEARN</p>
+                                <h2>Guides</h2>
+                        </div>
+
+                        <a href="/guides/error-handling">View guides →</a>
+                </div>
+
+                <div class="card-grid two-columns">
+                        <a class="feature-card" href="/guides/error-handling">
+                                <h3>Handling API Errors</h3>
+                                <p>
+                                        Understand common API errors and build
+                                        resilient client-side error handling.
+                                </p>
+                        </a>
+
+                        <a class="feature-card" href="/guides/webhooks">
+                                <h3>Working with Webhooks</h3>
+                                <p>
+                                        Process webhook events safely and design
+                                        reliable event-driven integrations.
+                                </p>
+                        </a>
+                </div>
+        </section>
+
+        <section class="portal-section changelog-section">
+                <div class="section-heading">
+                        <div>
+                                <p class="section-eyebrow">UPDATES</p>
+                                <h2>Latest updates</h2>
+                        </div>
+
+                        <a href="/posts">View changelog →</a>
+                </div>
+
+                {
+                        posts.length === 0 ? (
+                                <div class="empty-state">
+                                        <p>No updates have been published yet.</p>
+                                </div>
+                        ) : (
+                                <div class="updates-list">
+                                        {posts.slice(0, 3).map((post) => (
+                                                <a
+                                                        class="update-row"
+                                                        href={`/posts/${post.id}`}
+                                                >
+                                                        <div>
+                                                                <h3>{post.data.title}</h3>
+                                                                {post.data.excerpt && (
+                                                                        <p>{post.data.excerpt}</p>
+                                                                )}
+                                                        </div>
+
+                                                        {post.data.publishedAt && (
+                                                                <time
+                                                                        datetime={post.data.publishedAt.toISOString()}
+                                                                >
+                                                                        {post.data.publishedAt.toLocaleDateString(
+                                                                                "en-US",
+                                                                                {
+                                                                                        year: "numeric",
+                                                                                        month: "short",
+                                                                                        day: "numeric",
+                                                                                },
+                                                                        )}
+                                                                </time>
+                                                        )}
+                                                </a>
+                                        ))}
+                                </div>
+                        )
+                }
+        </section>
 </Base>
