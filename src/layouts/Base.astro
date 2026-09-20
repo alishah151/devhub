@@ -82,7 +82,36 @@ const pageCtx = createPublicPageContext({
         </div>
       </div>
     </header>
+    <details class="mobile-docs-menu">
+      <summary>Documentation menu</summary>
 
+      <nav class="mobile-docs-nav" aria-label="Documentation navigation">
+        <div class="sidebar-section">
+          <p class="sidebar-heading">Documentation</p>
+          <a href="/getting-started">Getting Started</a>
+          <a href="/authentication">Authentication</a>
+        </div>
+
+        <div class="sidebar-section">
+          <p class="sidebar-heading">API Reference</p>
+          <a href="/api/projects">Projects API</a>
+          <a href="/api/users">Users API</a>
+          <a href="/api/webhooks">Webhooks</a>
+          <a href="/api/explorer">API Explorer</a>
+        </div>
+
+        <div class="sidebar-section">
+          <p class="sidebar-heading">Guides</p>
+          <a href="/guides/error-handling">Error Handling</a>
+          <a href="/guides/webhooks">Webhooks</a>
+        </div>
+
+        <div class="sidebar-section">
+          <p class="sidebar-heading">Resources</p>
+          <a href="/resources">Resources</a>
+        </div>
+      </nav>
+    </details>
     <div class="portal-layout">
       <aside class="docs-sidebar">
         <div class="sidebar-section">

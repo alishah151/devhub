@@ -259,12 +259,17 @@ a:hover {
     display: none;
   }
 
+  .mobile-docs-menu {
+    display: block;
+    margin: 16px 20px 0;
+  }
+
   .portal-layout {
     display: block;
   }
 
   .content-container {
-    padding: 32px 20px 56px;
+    padding: 24px 20px 56px;
   }
 
   .header-search {
@@ -937,4 +942,70 @@ a:hover {
 
 .nav-api-explorer {
   font-weight: 700;
+}
+
+.site-nav {
+  gap: 20px;
+  display: flex;
+}
+
+.mobile-docs-menu {
+  display: none;
+}
+
+.mobile-docs-menu summary {
+  cursor: pointer;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  list-style: none;
+}
+
+.mobile-docs-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-docs-menu summary::after {
+  content: "⌄";
+  float: right;
+  color: var(--muted);
+}
+
+.mobile-docs-menu[open] summary {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.mobile-docs-nav {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  background: var(--surface);
+}
+
+.mobile-docs-nav .sidebar-section {
+  margin-bottom: 20px;
+}
+
+.mobile-docs-nav .sidebar-section:last-child {
+  margin-bottom: 0;
+}
+
+.mobile-docs-nav a {
+  display: block;
+  padding: 7px 10px;
+  margin: 2px 0;
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.mobile-docs-nav a:hover {
+  background: var(--surface-muted);
+  color: var(--brand);
 }
