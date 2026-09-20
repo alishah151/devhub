@@ -2,7 +2,7 @@
 import { getSiteSettings } from "emdash";
 import { EmDashHead, EmDashBodyStart, EmDashBodyEnd } from "emdash/ui";
 import { createPublicPageContext } from "emdash/page";
-import LiveSearch from "emdash/ui/search";
+import DevHubSearch from "../components/DevHubSearch";
 import { resolveStarterSiteIdentity } from "../utils/site-identity";
 import "../styles/global.css";
 
@@ -77,10 +77,7 @@ const pageCtx = createPublicPageContext({
         </nav>
 
         <div class="header-search">
-          <LiveSearch
-            placeholder="Search documentation..."
-            collections={["posts", "pages"]}
-          />
+          <DevHubSearch placeholder="Search documentation..." client:load />
         </div>
       </div>
     </header>
