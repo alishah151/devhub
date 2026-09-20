@@ -1,0 +1,20 @@
+---
+import Base from "../../layouts/Base.astro";
+import ApiExplorer from "../../components/ApiExplorer";
+---
+
+<Base
+  title="API Explorer"
+  description="Interactive API Explorer for the DevHub API."
+>
+  <div class="page-intro">
+    <p class="section-eyebrow">API REFERENCE</p>
+    <h1>API Explorer</h1>
+    <p>
+      Experiment with DevHub endpoints and inspect example requests and
+      responses.
+    </p>
+  </div>
+
+  <ApiExplorer client:load />
+</Base>
